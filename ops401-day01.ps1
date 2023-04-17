@@ -1,5 +1,5 @@
 # Set the timeout value in seconds (e.g., 900 seconds = 15 minutes)
-$timeout = 900
+$timeout = 300
 
 # Enable the screensaver
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name ScreenSaveActive -Value 1
