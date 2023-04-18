@@ -1,3 +1,9 @@
+# Ops401 Code Challenge
+# Author: Justin 'Sage' Tabios
+# Date of revision: 17 Apr 2023
+
+# ChatGPT help made script
+
 # Set the timeout value in seconds (e.g., 900 seconds = 15 minutes)
 $timeout = 300
 
