@@ -9,7 +9,7 @@ import os, datetime, time
 target = "8.8.8.8"
 ping = os.system("ping -c 1" + target)
 print(ping)
-time.sleep(2)
+
 
 #Transmit a single ICMP (ping) packet to specific IP every two seconds. use an infinite while loop
 
@@ -19,13 +19,19 @@ time.sleep(2)
 #For every ICMP transmission attempted, print the status variable along with a comprehensive timestamp and
 
 #Define a function 
-def check_ping(target)
+def check_ping(target):
     response = os.system ("ping -c 1 " + target)
 
     # Check if the host is up or down and print the appropriate message
-    if respoonse == 0:
-        ping_status = "Network is active"
+    if response == 0:
+        ping_status = "OOOUUUUIIIIIIIIII"
     else:
-        ping_status = "Network is down"
+        ping_status = "OH FUCK FUCK FUCK FUCK FUCK. SHIT SHIT SHIT"
 
-return ping_status    
+    return ping_status    
+ping_status_2 = check_ping(target)
+
+print(ping_status_2)
+print(datetime.datetime.now)
+time.sleep(2)
+
