@@ -1,24 +1,38 @@
-# Ops401 Code Challenge day 03
-# Author: Justin 'Sage Odom' Tabios
-# Date of revision: 19 APR 2023
-# Purpose: Add on from uptime sensor tool
-
 #!/usr/bin/python3
 # This is a script that establishes a ping heartbeat to a target address
 
 # Import libraries
 
 import os, datetime, time, smtplib
+from getpass import getpass
+from datetime import datetime
+# Test the mail functionality
+email = input("Please provide your email\n")
+password = getpass("Please provide password\n")
 
 # Defining variables
+
 # Creates SMTP session
 s = smtplib.SMTP('smtp.gmail.com', 587)
 # Perform a single ping
-target = "8.8.8.8"
-ping = os.system("ping -c 1" + target)
+target = input('Enter a target IP Address:\n')
+ping = os.system("ping -c 1 " + target)
 # Message to be sent
 message = "Message_you_need_to_send"
+# Starts a TLS(Transport Layer Security) 
+s.starttls()
+# Authentication
+s.login("anonlocalscientist@gmail.com", "jmvgahbvuxivfprw")
 
+
+# Sending the mail
+s.sendmail("heartbeat@bot.com","anonlocalscientist@gmail.com", message)
+
+
+# Terminates the session
+s.quit()
+
+currentTime = datetime.now()
 #Define a function 
 def check_ping(target):
     response = os.system ("ping -c 1 " + target)
@@ -31,19 +45,11 @@ def check_ping(target):
 
     return ping_status    
 ping_status_2 = check_ping(target)
-
-# Starts a TLS(Transport Layer Security) 
-s.starttls()
-# Authentication
-s.login("sender_email_id", "sender_email_id_password")
+print(ping_status_2) 
+print(currentTime)
+time.sleep(2)
 
 
-# Sending the mail
-s.sendmail("sender_email_id","receiver_email_id", message)
-
-
-# Terminates the session
-s.quit()
 
 print(ping)
 
@@ -56,7 +62,5 @@ print(ping)
 
 
 
-print(ping_status_2)
-print(datetime.datetime.now)
-time.sleep(2)
+
 
