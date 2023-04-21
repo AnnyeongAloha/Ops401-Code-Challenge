@@ -23,3 +23,7 @@ Remove-Item $securityTemplatePath
 
 # Output success message
 Write-Host "Password must meet complexity requirements has been set to enabled."
+
+
+# source:
+# ChatGPT
