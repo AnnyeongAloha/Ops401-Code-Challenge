@@ -141,3 +141,4 @@ folder_path = "/path/to/folder"
 encrypt_folder(folder_path, key)
 decrypt_folder(folder_path, key)
 
+# from the class demo and ChatGPT
