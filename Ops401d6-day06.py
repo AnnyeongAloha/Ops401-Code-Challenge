@@ -82,3 +82,62 @@ d = f.decrypt(token)
 
 # Display the plaintext
 print(d)
+
+#!/usr/bin/env python3
+# Script: OPS 401 Class 02 Ops Challenge Solution
+# Author: Justin 'Sage Odom' Tabios
+# Date of latest revision: 25 April 2023
+# Purpose: Ops Challenge: File Encryption Script Part 1 of 3
+
+# Import Libraries
+import os
+from cryptography.fernet import Fernet
+
+# Declare Functions
+def write_key():
+    # Generates a key and save it into a file
+    key = Fernet.generate_key()
+    with open("key.key", "wb") as key_file:
+        key_file.write(key)
+
+def load_key():
+    # Loads the key from the current directory named `key.key`
+    return open("key.key", "rb").read()
+
+def encrypt_file(filepath, key):
+    f = Fernet(key)
+    with open(filepath, "rb") as file:
+        file_data = file.read()
+    encrypted_data = f.encrypt(file_data)
+    with open(filepath, "wb") as file:
+        file.write(encrypted_data)
+
+def decrypt_file(filepath, key):
+    f = Fernet(key)
+    with open(filepath, "rb") as file:
+        encrypted_data = file.read()
+    decrypted_data = f.decrypt(encrypted_data)
+    with open(filepath, "wb") as file:
+        file.write(decrypted_data)
+
+def encrypt_folder(folder_path, key):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            encrypt_file(file_path, key)
+
+def decrypt_folder(folder_path, key):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            decrypt_file(file_path, key)
+
+# Main
+write_key()
+key = load_key()
+
+# Example usage:
+folder_path = "/path/to/folder"
+encrypt_folder(folder_path, key)
+decrypt_folder(folder_path, key)
+
