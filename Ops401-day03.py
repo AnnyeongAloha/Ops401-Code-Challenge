@@ -22,7 +22,7 @@ message = "Message_you_need_to_send"
 # Starts a TLS(Transport Layer Security) 
 s.starttls()
 # Authentication
-s.login("anonlocalscientist@gmail.com", "jmvgahbvuxivfprw")
+s.login("email", "password")
 
 
 # Sending the mail
